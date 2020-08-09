@@ -1,0 +1,10 @@
+pipeline{
+  agent any
+  stages{
+    stage('Create aws stack'){
+      steps{
+        echo "Creating AWS CloudFormation Stack"
+      }
+    }
+  }
+}
