@@ -40,6 +40,7 @@ pipeline{
     stage('Deploy to Dev'){
       steps{
         echo "Deploying to dev environment"
+        sh 'docker run -d --name=petclinic -p 8081:8080 d3athstalker/petclinic'
       }
     }
   }
