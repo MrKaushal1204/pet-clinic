@@ -1,6 +1,6 @@
 pipeline{
   environment{
-    registry = "d3athstalker/pet-clinic"
+    registry = "d3athstalker/petclinic"
     registryCredential = "docker_hub_d3athstalker"
     dockerImage = ''
   }
