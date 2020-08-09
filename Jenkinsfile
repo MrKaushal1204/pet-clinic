@@ -18,9 +18,9 @@ pipeline{
         archiveArtifacts artifacts: '**/*.jar', followSymlinks: false
       }
     }
-    stage('Build docker images'){
+    stage('Build docker image'){
       steps{
-        echo "Building docker images"
+        echo "Building docker image"
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER" 
         }
