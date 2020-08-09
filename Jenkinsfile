@@ -10,7 +10,7 @@ pipeline{
     stage('Archive'){
       steps{
         echo "Archiving project"
-        archiveArtifacts artifacts: ''
+archiveArtifacts artifacts: '', followSymlinks: false
       }
     }
     stage('Build docker images'){
