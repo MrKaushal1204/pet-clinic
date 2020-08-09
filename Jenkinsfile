@@ -21,7 +21,7 @@ pipeline{
     stage('Build docker image'){
       steps{
         echo "Building docker image"
-        sh 'sudo usermod -aG docker $USER'
+        sh 'sudo usermod -aG -S 9090 docker jenkins'
         script{
           dockerImage = docker.build registry + ":$BUILD_NUMBER" 
         }
