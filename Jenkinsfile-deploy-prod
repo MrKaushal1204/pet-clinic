@@ -4,11 +4,19 @@ pipeline{
     stage("Deploy to prod1"){
       steps{
         echo "Deploying to prod1"
+        sshagent(['ssh-key']) {
+          sh "ssh -o StrictHostChecking=no ec2-user@54.173.79.142 docker rm -f petclinic || true"
+          sh "ssh -o StrictHostChecking=no ec2-user@54.173.79.142 docker run -d --name=petclinic -p 8081:8080 d3athstalker/petclinic"
+        }
       }
     }
     stage("Deploy to prod2"){
       steps{
         echo "Deploying to prod2"
+        sshagent(['ssh-key']) {
+          sh "ssh -o StrictHostChecking=no ec2-user@100.24.25.169 docker rm -f petclinic || true"
+          sh "ssh -o StrictHostChecking=no ec2-user@100.24.25.169 docker run -d --name=petclinic -p 8081:8080 d3athstalker/petclinic"
+        }
       }
     }
   }
