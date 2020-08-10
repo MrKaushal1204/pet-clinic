@@ -1,1 +1,15 @@
-
+pipeline{
+  agent any
+  stages{
+    stage("Deploy to prod1"){
+      steps{
+        echo "Deploying to prod1"
+      }
+    }
+    stage("Deploy to prod2"){
+      steps{
+        echo "Deploying to prod2"
+      }
+    }
+  }
+}
