@@ -15,7 +15,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       SubnetId: !Select [0, !Ref ELBSubnet]
-      ImageId: ami-0c5bf07e510b75b11
+      ImageId: ami-02354e95b39ca8dec
       InstanceType: t2.micro
       KeyName: !Ref SSHKey
       SecurityGroupIds:
@@ -35,7 +35,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       SubnetId: !Select [1, !Ref ELBSubnet]
-      ImageId: ami-0c5bf07e510b75b11
+      ImageId: ami-02354e95b39ca8dec
       InstanceType: t2.micro
       KeyName: !Ref SSHKey
       SecurityGroupIds:
@@ -44,9 +44,9 @@ Resources:
       UserData:
         Fn::Base64: |
           #!/bin/bash -xe
-          apt update -y
+          yum update -y
           amazon-linux-extras install docker
-          apt install docker
+          yum install docker
           service docker start
           usermod -a -G docker ubuntu
           docker run -d --name=petclinic -p 8081:8080 d3athstalker/petclinic
